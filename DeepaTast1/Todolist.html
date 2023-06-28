@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDo List</title>
+  <style>
+    body{
+      margin:0px;
+      background-color:skyblue;
+    }
+    h1{
+      color:#fb97ad;
+      text-align: center;
+    }
+    div{
+      margin:16px;
+      padding:8px;
+      background-color: #04041c;
+      box-shadow: 2px 5px 5px rgba(0,0,0,7);
+      border:none;
+      border-radius: 25px;
+    }
+    #container{
+      margin:24px;
+      padding:24px;
+      color:white;
+      background-color: #04041c;
+      text-align: center;
+    }
+    #input{
+      color:white;
+      background-color: #04041c;
+      border:none;
+      border-bottom: 1px solid #616091;
+      border-left: 1px solid #616091;
+
+
+    }
+    #btn{
+      border:none;
+      border-radius: 8px;
+      background-color: #b4b3d8;
+    }
+  </style>
+
+</head>
+<body>
+  <div>
+    <h1>ToDo List</h1>
+  </div>
+  <div id="container">
+    <input type="text" id="input" placeholder="Entet your text here...">
+    &nbsp;&nbsp;&nbsp;
+    <button id="btn">AddToDo</button>
+    <ul class="ul" style="list-style-type: none;"></ul>
+  </div>
+  
+</body>
+<script>
+  document.getElementById('btn').addEventListener('click',
+  function(){
+    let input = document.getElementById('input').value;
+
+    //creating the todo list element
+    let elem=document.createElement('li');
+    let btn1=document.createElement('button');
+    let btn2=document.createElement('button');
+    btn1.innerText="Done";
+    btn2.innerText="Delete";
+    elem.innerText=input;
+    let ul=document.querySelector('ul');
+    ul.appendChild(elem);
+    elem.appendChild(btn1);
+    elem.appendChild(btn2);
+    //Adding style to list
+    btn1.style.border="none";
+    btn1.style.marginLeft="3%";
+    btn1.style.borderRadius="8px";
+    btn1.style.backgroundColor="#b43d8";
+    btn2.style.border="none";
+    btn2.style.marginLeft="3%";
+    btn2.style.borderRadius="8px";
+    btn2.style.backgroundColor="#b43d8";
+    //Adding button functionality to created buttons
+    btn1.addEventListener('click',
+    function(){
+      elem.style.textDecoration="line-through;"
+    }
+    );
+    btn2.addEventListener('click',
+    function(){
+      elem.remove();
+    }
+    );
+    document.getElementById('input').value="";
+
+
+
+  }
+  );
+</script>
+</html>
